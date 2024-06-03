@@ -61,7 +61,7 @@ public class Mazo <E> {
     }
     //originalmente, la clase se pensó para ser un mazo de mtg, por eso los metodos
     //para evitar problemas en el pasaje de datos y la posible repeticion o falta de cartas en el mazo, se usa adivinar/al fondo en vez de robar
-    
+
     @Override
     public String toString() {
         return "Test.Mazo{" +
