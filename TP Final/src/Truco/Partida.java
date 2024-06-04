@@ -74,14 +74,10 @@ public class Partida {
                 case 2: //ambos jugadores jugaron su primera carta
                     aux = jugador1.ultimaCartaJugada().compareTo(jugador2.ultimaCartaJugada()); //chequea cual carta es mayor de las jugadas
                     if (aux == -1){ //si es menor
-                        jugador2.rondaGanada();
-                        jugadorAct = jugador2;
-                        jugadorRiv = jugador1;
+                        jugadorGanaRond(jugador2, jugador1);
                     }
                     if (aux == 1){ //si es mayor
-                        jugador1.rondaGanada();
-                        jugadorAct = jugador1;
-                        jugadorRiv = jugador2;
+                        jugadorGanaRond(jugador1, jugador2);
                     }
                     if (aux == 0){ //si son iguales
                         jugador1.rondaGanada();
@@ -93,14 +89,10 @@ public class Partida {
                 case 4: //ambos jugadores jugaron su segunda carta
                     aux = jugador1.ultimaCartaJugada().compareTo(jugador2.ultimaCartaJugada());
                     if (aux == -1){
-                        jugador2.rondaGanada();
-                        jugadorAct = jugador2;
-                        jugadorRiv = jugador1;
+                        jugadorGanaRond(jugador2, jugador1);
                     }
                     if (aux == 1){
-                        jugador1.rondaGanada();
-                        jugadorAct = jugador1;
-                        jugadorRiv = jugador2;
+                        jugadorGanaRond(jugador1, jugador2);
                     }
                     if (aux == 0){
                         if (!parda){ //si no hubo empate en la primera ronda, da puntos a ambos, causando que el que haya ganado la primera, gane la mano
@@ -115,14 +107,10 @@ public class Partida {
                 case 6: //ambos jugaron su ultima carta
                     aux = jugador1.ultimaCartaJugada().compareTo(jugador2.ultimaCartaJugada());
                     if (aux == -1){
-                        jugador2.rondaGanada();
-                        jugadorAct = jugador2;
-                        jugadorRiv = jugador1;
+                        jugadorGanaRond(jugador2, jugador1);
                     }
                     if (aux == 1){
-                        jugador1.rondaGanada();
-                        jugadorAct = jugador1;
-                        jugadorRiv = jugador2;
+                        jugadorGanaRond(jugador1, jugador2);
                     }
                     if (aux == 0){
                         if (!parda){ //caso similar al empate arriba mencionado, comprueba la mayor de las primeras cartas jugadas
@@ -144,6 +132,12 @@ public class Partida {
             }
         }
         return carAux;
+    }
+
+    private void jugadorGanaRond(Jugador gana, Jugador nogana){
+            gana.rondaGanada();
+            jugadorAct = gana;
+            jugadorRiv = nogana;
     }
 
     public Jugador chequeoMano(){ //chequea si alguien gano la mano, retorna el ganador en ese caso, si no, null
