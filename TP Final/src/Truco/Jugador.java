@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Jugador {
     //atri
     private String nombre; //si se hace mas enfoque en los jugadores, esto se puede cambiar
-    private int puntos;
+    private int puntos; //puntuacion de la partida
     private ArrayList<CartaTruco> manoActual;
-    private int tantoEnvidoAct;
+    private int tantoEnvidoAct; //puntaje de la mano actual para el envido
     private int rondaAct; //para llevar cuenta de cuantas rondas se gano esta mano
     private ArrayList<CartaTruco> cartasJugadas;
 
