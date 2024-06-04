@@ -209,8 +209,8 @@ public class Partida implements ITruco{
         ganapuntos.darPuntos(puntos);
     }
 
-    public String envido(int puntos){ //ingresar los puntos del envido que se esta jugando: envido = 2, real = 3, envido+envido = 4, envi+real = 5
-        Jugador aux = null; //envido no es usa para cantar, se usa para calcular el ganador del mismo :)
+    private Jugador envidoChequeo(int puntos){ //ingresar los puntos del envido que se esta jugando: envido = 2, real = 3, envido+envido = 4, envi+real = 5
+        Jugador aux = null; // se usa para calcular el ganador del mismo :)
         if (jugador1.getTantoEnvidoAct() > jugador2.getTantoEnvidoAct()){
             jugador1.darPuntos(puntos);
             aux = jugador1;
@@ -223,7 +223,45 @@ public class Partida implements ITruco{
             jugadorMano.darPuntos(puntos);
             aux = jugadorMano;
         }
-        return aux.getNombre() + " gano con " + aux.getTantoEnvidoAct() + " tantos"; //puede generar un error si no va a ningun if (pero si esta bien hecho, no deberia pasar)
+        return aux;
+    }
+    public Jugador envido1(){ //cada caso hecho un método para mayor facilidad a la hora de hacer los menus
+        Jugador aux = envidoChequeo(2);
+        return aux;
+    }
+    public Jugador envido2(){
+        Jugador aux = envidoChequeo(4);
+        return aux;
+    }
+    public Jugador real1(){
+        Jugador aux = envidoChequeo(3);
+        return aux;
+    }
+    public Jugador real2(){
+        Jugador aux = envidoChequeo(5);
+        return aux;
+    }
+    public Jugador faltaEnvido(){ //es similar al chequeo de envido, pero al necesitar el puntaje actual del rival, se neccesita otro método
+        Jugador aux = null;
+        if (jugador1.getTantoEnvidoAct() > jugador2.getTantoEnvidoAct()){
+            jugador1.darPuntos(30 - jugador2.getPuntos());
+            aux = jugador1;
+        }
+        if (jugador2.getTantoEnvidoAct() > jugador1.getTantoEnvidoAct()){
+            jugador2.darPuntos(30 - jugador1.getPuntos());
+            aux = jugador2;
+        }
+        if (jugador1.getTantoEnvidoAct() == jugador2.getTantoEnvidoAct()){
+            if (jugadorMano == jugador1){
+                jugador1.darPuntos(30 - jugador2.getPuntos());
+                aux = jugador1;
+            }
+            else{
+                jugador2.darPuntos(30 - jugador1.getPuntos());
+                aux = jugador2;
+            }
+        }
+        return aux;
     }
     public String mostrarPuntaje(){
         return jugadorRiv.getNombre() +": " + jugadorRiv.getPuntos() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.getPuntos();

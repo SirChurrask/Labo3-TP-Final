@@ -5,6 +5,10 @@ public interface ITruco extends IJuegoCartas {
     public void retruco();
     public void valecuatro();
     public void noQuiero(Jugador ganapuntos, int puntos);
-    public String envido(int puntos);
     public void irseAlMazo();
+    public Jugador envido1();
+    public Jugador envido2();
+    public Jugador real1();
+    public Jugador real2();
+    public Jugador faltaEnvido();
 }
