@@ -1,6 +1,6 @@
 package Truco;
 
-public class Partida {
+public class Partida implements ITruco{
     //atri
     private Jugador jugador1;
     private Jugador jugador2;
@@ -65,7 +65,7 @@ public class Partida {
         jugador2.calcularEnvido();
     }
 
-    public CartaTruco jugarCarta(int carta){ //metodo principal
+    public Carta jugarCarta(int carta){ //metodo principal
         CartaTruco carAux = jugadorAct.jugarCartaJug(carta);
         if (carAux != null){
             rondaactual++; //aumenta el numero de cartas jugadas esta mano, para utilizarse de timer y llevar el orden de turnos
