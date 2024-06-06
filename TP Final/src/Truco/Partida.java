@@ -174,9 +174,11 @@ public class Partida implements ITruco{
         jugadorRiv = aux;
     }
 
-    public void irseAlMazo(){ //rendirse esta mano y dar puntos al rival
+    public Jugador irseAlMazo(){ //rendirse esta mano y dar puntos al rival
+        Jugador ganadormano = jugadorRiv;
         jugadorRiv.darPuntos(trucoAcumulado);
         finalMano();
+        return ganadormano;
     }
 
     public String mostrarManoJugAct(){
@@ -241,7 +243,7 @@ public class Partida implements ITruco{
         Jugador aux = envidoChequeo(5);
         return aux;
     }
-    public Jugador faltaEnvido(){ //es similar al chequeo de envido, pero al necesitar el puntaje actual del rival, se neccesita otro método
+    public Jugador faltaEnvido(){ //es similar al chequeo de envido, pero al necesitar el puntaje actual del rival, se necesita hacer un chequeo del jugador que pierde
         Jugador aux = null;
         if (jugador1.getTantoEnvidoAct() > jugador2.getTantoEnvidoAct()){
             jugador1.darPuntos(30 - jugador2.getPuntos());
