@@ -29,7 +29,10 @@ public class Carta implements Serializable {
     }
     @Override
     public String toString() {
-        return "El " + numero + " de " + palo;
+        return "Carta {" +
+                "numero = " + numero +
+                "palo = " + palo+
+                '}';
     }
 
     @Override

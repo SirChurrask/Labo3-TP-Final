@@ -39,21 +39,34 @@ public class Jugador {
     }
 
     //metodos
-    public CartaTruco jugarCartaJug(int carta){  //int 1, 2, 3 (si mano completa)
+    public CartaTruco jugarCartaJug(int carta) throws ArrayIndexOutOfBoundsException{  //int 1, 2, 3 (si mano completa)
         CartaTruco aux = null;
         if (carta <= manoActual.size() && carta > 0){
             aux = manoActual.get(carta-1); //guarda la carta a retornar desde el arreglo al aux
             cartasJugadas.addLast(aux);
             manoActual.remove(carta-1); //elimina la carta en mano
+        }else{
+            throw new ArrayIndexOutOfBoundsException("No tienes esa carta");
         }
         return aux;
     }
 
     public String mostrarMano(){  //se puede hacer un formato mejor
-        return manoActual.toString();
+        String mano = "";
+        for(CartaTruco carta: manoActual){
+            mano+= carta.toString()+"\n";
+        }
+
+        return mano;
     }
 
-    public String mostrarCartasJugadas(){return cartasJugadas.toString();}
+    public String mostrarCartasJugadas(){
+        String mano = "";
+        for(CartaTruco carta: cartasJugadas){
+            mano+= carta.toString()+"\n";
+        }
+        return mano;
+    }
 
     public void calcularEnvido(){
         int tanto = 0;

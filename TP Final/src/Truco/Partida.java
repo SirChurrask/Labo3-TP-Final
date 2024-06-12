@@ -1,5 +1,7 @@
 package Truco;
 
+import java.util.ArrayList;
+
 public class Partida implements ITruco{
     //atri
     private Jugador jugador1;
@@ -40,6 +42,10 @@ public class Partida implements ITruco{
 
     public int getTrucoAcumulado() {
         return trucoAcumulado;
+    }
+
+    public Jugador getJugadorRiv() {
+        return jugadorRiv;
     }
 
     //metodos
@@ -135,9 +141,9 @@ public class Partida implements ITruco{
     }
 
     private void jugadorGanaRond(Jugador gana, Jugador nogana){
-            gana.rondaGanada();
-            jugadorAct = gana;
-            jugadorRiv = nogana;
+        gana.rondaGanada();
+        jugadorAct = gana;
+        jugadorRiv = nogana;
     }
 
     public Jugador chequeoMano(){ //chequea si alguien gano la mano, retorna el ganador en ese caso, si no, null
@@ -155,7 +161,7 @@ public class Partida implements ITruco{
         return ganomano;
     }
 
-    private void finalMano(){ //cambia los punteros para cambiar a que jugador le toca jugar primero en cada mano
+    public void finalMano(){ //cambia los punteros para cambiar a que jugador le toca jugar primero en cada mano
         if (jugadorMano == jugador1){
             jugadorMano = jugador2;
             jugadorAct = jugador2;
@@ -174,11 +180,8 @@ public class Partida implements ITruco{
         jugadorRiv = aux;
     }
 
-    public Jugador irseAlMazo(){ //rendirse esta mano y dar puntos al rival
-        Jugador ganadormano = jugadorRiv;
-        jugadorRiv.darPuntos(trucoAcumulado);
-        finalMano();
-        return ganadormano;
+    public void irseAlMazo(Jugador ganapuntos){ //rendirse esta mano y dar puntos al rival
+        ganapuntos.darPuntos(trucoAcumulado);
     }
 
     public String mostrarManoJugAct(){
@@ -212,7 +215,7 @@ public class Partida implements ITruco{
     }
 
     private Jugador envidoChequeo(int puntos){ //ingresar los puntos del envido que se esta jugando: envido = 2, real = 3, envido+envido = 4, envi+real = 5
-        Jugador aux = null; // se usa para calcular el ganador del mismo :)
+        Jugador aux = null; //envido no es usa para cantar, se usa para calcular el ganador del mismo :)
         if (jugador1.getTantoEnvidoAct() > jugador2.getTantoEnvidoAct()){
             jugador1.darPuntos(puntos);
             aux = jugador1;
@@ -227,7 +230,7 @@ public class Partida implements ITruco{
         }
         return aux;
     }
-    public Jugador envido1(){ //cada caso hecho un método para mayor facilidad a la hora de hacer los menus
+    public Jugador envido1(){
         Jugador aux = envidoChequeo(2);
         return aux;
     }
@@ -243,7 +246,7 @@ public class Partida implements ITruco{
         Jugador aux = envidoChequeo(5);
         return aux;
     }
-    public Jugador faltaEnvido(){ //es similar al chequeo de envido, pero al necesitar el puntaje actual del rival, se necesita hacer un chequeo del jugador que pierde
+    public Jugador faltaEnvido(){
         Jugador aux = null;
         if (jugador1.getTantoEnvidoAct() > jugador2.getTantoEnvidoAct()){
             jugador1.darPuntos(30 - jugador2.getPuntos());
@@ -268,4 +271,5 @@ public class Partida implements ITruco{
     public String mostrarPuntaje(){
         return jugadorRiv.getNombre() +": " + jugadorRiv.getPuntos() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.getPuntos();
     }
+
 }

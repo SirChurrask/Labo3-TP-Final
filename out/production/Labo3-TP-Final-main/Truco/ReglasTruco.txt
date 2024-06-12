@@ -1,0 +1,60 @@
+ Reglas del Truco
+
+  - Componentes del juego -
+-  Mazo: Se juega con un mazo español de 40 cartas, quitando los 8 y 9.
+- Jugadores: Pueden jugar dos jugadores (mano a mano) o en parejas (dos contra dos o tres contra tres).
+
+ - Objetivo del juego -
+El objetivo del Truco es ganar puntos, ya sea ganando manos (también llamadas "trucos") o cantando las distintas apuestas del juego. El primer equipo o jugador en alcanzar un puntaje preestablecido (habitualmente 15, 30 o 40 puntos) gana la partida.
+
+ - Valor de las cartas -
+Las cartas tienen un valor específico que varía según el contexto (truco o envido). Aquí están los valores para el Truco, ordenados de mayor a menor:
+
+1.Ancho de espadas (1 de espadas)
+2.Ancho de bastos (1 de bastos)
+3. Siete de espadas
+4. Siete de oros
+5. Tres
+6. Dos
+7. Anchos falsos (1 de copas y 1 de oros)
+8. Doce (Rey)
+9. Once (Caballo)
+10.Diez (Sota)
+11.Siete falsos (7 de copas y 7 de bastos)
+12.Seis
+13.Cinco
+14.Cuatro
+
+  - El juego -
+1. **Reparto de cartas:** Cada jugador recibe tres cartas, repartidas de una en una. El jugador a la derecha del repartidor recibe la primera carta.
+2. **Desarrollo del juego:** El juego se desarrolla en tres manos o "trucos". El jugador o equipo que gana dos de las tres manos gana el juego del Truco.
+
+ - Cantos -
+Durante el juego, los jugadores pueden realizar diferentes "cantos" que suman emoción y estrategia al juego. Los principales son:
+
+1. Truco:Es una apuesta que se puede realizar en cualquier momento del juego. El jugador que canta "Truco" está invitando a aumentar la apuesta. El equipo oponente puede:
+   - Aceptar ("Quiero")
+   - Rechazar ("No quiero"), perdiendo el punto en juego
+   - Subir la apuesta ("Retruco")
+   
+   La secuencia completa de cantos es: Truco, Retruco, Vale Cuatro. El equipo que canta "Vale Cuatro" está haciendo la máxima apuesta posible en esa mano.
+   
+2. Envido: Se canta antes de jugar la primera carta del truco. El Envido suma puntos basados en las cartas del mismo palo. Los valores de las cartas para el Envido son: 1 al 7 (su valor nominal) y 10, 11, 12 (cero puntos). La puntuación del Envido se calcula sumando los valores de dos cartas del mismo palo y añadiendo 20 puntos. Por ejemplo, un 5 y un 6 del mismo palo suman 31 puntos (5 + 6 + 20). El máximo puntaje posible es 33.
+   
+   La secuencia de cantos del Envido es: Envido, Real Envido, Falta Envido. Los puntos ganados pueden variar según el canto y la situación del juego.
+   
+3. Flor: Solo se juega en algunas variantes del Truco y se canta cuando un jugador tiene las tres cartas del mismo palo. Es el canto de mayor puntaje y tiene su propia secuencia: Flor, Contra Flor al Resto.
+
+ - Puntuación -
+- Truco: 1 punto si es aceptado, 2 puntos si es Retruco, 3 puntos si es Vale Cuatro.
+- Envido: El ganador del Envido gana 2 puntos. Si se cantan varias apuestas de Envido, los puntos se suman.
+- Flor: Gana 3 puntos. Si se canta Contra Flor, se juega por todos los puntos necesarios para ganar la partida.
+
+    - Manejo del juego -
+- Mano: El jugador a la derecha del repartidor es la "mano" y tiene prioridad en caso de empate.
+- Muestra: Si hay empate en las cartas jugadas, la carta más alta gana el truco. Si ambas cartas tienen el mismo valor, gana la carta del jugador mano.
+
+ -  Resumen
+El Truco es un juego de estrategia y engaño, donde se mezclan las habilidades de los jugadores para manejar las cartas y la capacidad de apostar en el momento justo. Se trata tanto de tener buenas cartas como de saber jugar las cartas en la mejor forma posible.
+
+Espero que esta explicación te sea útil. ¡Disfruta jugando al Truco!
