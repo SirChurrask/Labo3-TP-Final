@@ -185,10 +185,10 @@ public class Partida implements ITruco{
     }
 
     public String mostrarManoJugAct(){
-        return jugadorAct.mostrarMano() + " Envido: " + getJugadorAct().getTantoEnvidoAct();
+        return "Sus cartas:\n " + jugadorAct.mostrarMano() + " Envido: " + getJugadorAct().getTantoEnvidoAct();
     }
     public String mostrarCartasJugadas(){
-        return jugadorRiv.getNombre() +": " + jugadorRiv.mostrarCartasJugadas() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.mostrarCartasJugadas();
+        return "Cartas jugadas:\n" + jugadorRiv.getNombre() +": " + jugadorRiv.mostrarCartasJugadas() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.mostrarCartasJugadas();
     }
 
     public Jugador ganadorPartida(){ //forma para dar la victoria de la partida a un jugador
@@ -269,7 +269,7 @@ public class Partida implements ITruco{
         return aux;
     }
     public String mostrarPuntaje(){
-        return jugadorRiv.getNombre() +": " + jugadorRiv.getPuntos() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.getPuntos();
+        return "Puntaje actual:\n" + jugadorRiv.getNombre() +": " + jugadorRiv.getPuntos() + "\n" + jugadorAct.getNombre() + ": " + jugadorAct.getPuntos();
     }
 
 }
