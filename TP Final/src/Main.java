@@ -81,6 +81,7 @@ public class Main {
 
                         System.out.println(menues.mostrarMenuInstrucciones());
                         System.out.printf("Ingrese una opcion: ");
+                        while (!scan.hasNextInt()) scan.next();
                         seleccionInstrucciones = scan.nextInt();
 
                         switch (seleccionInstrucciones)
@@ -94,6 +95,7 @@ public class Main {
                                 controladoraArchivos.leerArchivoReglas();
 
                                 System.out.printf("\n\nPresione 1 para volver al menu anterior o presiones 2 cerrar el programa: ");
+                                while (!scan.hasNextInt()) scan.next();
                                 opcion = scan.nextInt();
 
                                 if(opcion == 1)
@@ -112,6 +114,7 @@ public class Main {
                                 System.out.println(instrucciones.mostrarValores());
 
                                 System.out.printf("Presione 1 para volver al menu anterior o presiones 2 para cerrear el programa: ");
+                                while (!scan.hasNextInt()) scan.next();
                                 opcion = scan.nextInt();
 
                                 if(opcion == 1)
