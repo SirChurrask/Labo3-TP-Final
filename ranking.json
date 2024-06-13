@@ -1,1 +1,14 @@
-[{"puntos":0,"nombre":"pablo"},{"puntos":0,"nombre":"mario"}]
+[
+    {
+        "Nombre": "juan",
+        "Partidas Jugadas": 3,
+        "Partidas Perdidas": 3,
+        "Partidas Ganadas": 0
+    },
+    {
+        "Nombre": "pablo",
+        "Partidas Jugadas": 3,
+        "Partidas Perdidas": 3,
+        "Partidas Ganadas": 0
+    }
+]
