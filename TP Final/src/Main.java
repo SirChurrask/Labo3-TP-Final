@@ -33,6 +33,7 @@ public class Main {
         {
             System.out.printf(menues.mostrarMenuInicial());
             System.out.printf("Ingrese una opcion: ");
+            while (!scan.hasNextInt()) scan.next();
             seleccion = scan.nextInt();
 
             switch (seleccion)
@@ -43,6 +44,7 @@ public class Main {
                         System.out.println("");
                     }
                     System.out.println("Ingrese el nombre del 1er jugador: ");
+                    scan.nextLine();
                     String nombre = scan.nextLine();
                     Jugador j1 = new Jugador(nombre);
 
