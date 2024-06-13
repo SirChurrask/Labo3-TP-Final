@@ -13,17 +13,6 @@ public class MenuPartida {
     private Jugador ganoMano;
     private boolean cantarEnvido; //si está permitido cantar envido
     private Jugador cantaTruco; //puntero al jugador que cantó truco, para evitar que cante otra vez
-    private int cantar;
-    private int resp1;
-    private int resp2;
-    private int resp3;
-    private int resp4;
-    private int resp5;
-    private int resp6;
-    private int envido;
-    private int opcionturno;
-    private Jugador aux;
-    private int i;
     //
 
 
@@ -33,17 +22,6 @@ public class MenuPartida {
         ganoMano = null;
         cantarEnvido = true;
         cantaTruco = null;
-        cantar = 0;
-        resp1 = 0;
-        resp2 = 0;
-        resp3 = 0;
-        resp4 = 0;
-        resp5 = 0;
-        resp6 = 0;
-        envido = 0;
-        opcionturno = 0;
-        aux = null;
-        i = 0;
     }
 
     //
@@ -51,75 +29,82 @@ public class MenuPartida {
     public void partida(){
         Scanner scan = new Scanner(System.in);
         while (ganador == null) {
-            trucazo.empezarMano();
+            trucazo.empezarMano(); //se hace el inicio de la mano, limpiando datos que podrian quedar de manos anteriores
+            cantarEnvido = true;
+            cantaTruco = null;
             while (ganoMano == null) {
                 //jugador 1
-                System.out.println("jugador 1 \n");
+                //System.out.println("jugador 1 \n");
                 System.out.println(trucazo.getJugadorAct().getNombre());
                 System.out.println(trucazo.mostrarManoJugAct());
-                inicializarTurno();
+                //inicializarTurno();
                 opcionesJugador();
                 if (ganoMano == null) { //si la mano no termino en las acciones del primer jugador
-                    System.out.println("jugador 2 \n");
+                    //System.out.println("jugador 2 \n");
                     System.out.println(trucazo.getJugadorAct().getNombre());
                     System.out.println(trucazo.mostrarManoJugAct());
-                    inicializarTurno();
+                    //inicializarTurno();
                     opcionesJugador();
                 }
                 System.out.println(trucazo.mostrarCartasJugadas());
                 System.out.println(trucazo.mostrarPuntaje());
-                System.out.println("final ronda");
+                //System.out.println("final ronda");
             }
-            System.out.println("final mano");
+            //System.out.println("final mano");  //tanto el final ronda de arriba y el final mano es para revisar que los turnos avancen correctamente
             ganoMano = null;
             ganador = trucazo.ganadorPartida();
         }
         System.out.println("Ganador: " + ganador.getNombre());
     }
 
-    private void inicializarTurno(){
+    private void inicializarTurno(){ //borrar desp
         //inicializar turno
-        i = 0;
-        cantarEnvido = true; //si está permitido cantar envido
-        cantaTruco = null; //puntero al jugador que cantó truco, para evitar que cante otra vez
-        cantar = 0;
-        resp1 = 0;
-        resp2 = 0;
-        resp3 = 0;
-        resp4 = 0;
-        resp5 = 0;
-        resp6 = 0;
-        envido = 0;
-        opcionturno = 0;
-        aux = null;
+        cantarEnvido = true;
+        cantaTruco = null;
     }
 
     private void opcionesJugador(){
         Scanner scan = new Scanner(System.in);
+        //datos aux para los switchs
+        int i = 0;
+        int cantar = 0;
+        int resp1 = 0;
+        int resp2 = 0;
+        int resp3 = 0;
+        int resp4 = 0;
+        int resp5 = 0;
+        int resp6 = 0;
+        int envido = 0;
+        int opcionturno = 0;
+        Jugador aux = null;
         //opciones jugador
-        while (i == 0){
+        while (i == 0){ //se pueden elegir varias opciones, como cantar envido, truco e irse al mazo, asi que se tiene que utilizar un loop para hacer esto posible
             System.out.println("qué quiere hacer? 1: jugar carta, 2: cantar, 3: irse al mazo");
+            while (!scan.hasNextInt()) scan.next(); //para evitar errores
             opcionturno = scan.nextInt();
             switch (opcionturno) {
                 case 1:
                     System.out.println(trucazo.getJugadorAct().getNombre() + " cual carta?");
+                    while (!scan.hasNextInt()) scan.next();
                     i = scan.nextInt();
-                    trucazo.jugarCarta(i);
-                    ganoMano = trucazo.chequeoMano();
-                    i = 1;
+                    trucazo.jugarCarta(i); //jugar la carta de la mano
+                    ganoMano = trucazo.chequeoMano(); //chequeo comparando las cartas jugadas de ambos jugadores para revisar si se termina la mano
+                    i = 1; //rompe el while que loopea las opciones
                     break;
                 case 2:
                     // cantar
                     System.out.println(trucazo.getJugadorAct().getNombre() + ", quiere cantar algo? 0: nada,  1: truco, 2: envido");
+                    while (!scan.hasNextInt()) scan.next();
                     cantar = scan.nextInt();
                     switch (cantar) {
                         case 1:
                             if (trucazo.getJugadorAct() != cantaTruco) {
-                                cantaTruco = trucazo.getJugadorAct();
-                                if (trucazo.getTrucoAcumulado() == 1) {
+                                cantaTruco = trucazo.getJugadorAct(); //chequea si este jugador cantó truco en esta mano, si no, permite cantarlo y guarda puntero del jugador
+                                if (trucazo.getTrucoAcumulado() == 1) { //revisa el truco acumulado, dato que muestra cual fue el truco mayor cantado (1 base, 2 truco, 3 retruco, 4 vale cuatro)
                                     System.out.println("truco");
                                     //jugador rival responde
                                     System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                    while (!scan.hasNextInt()) scan.next();
                                     resp1 = scan.nextInt();
                                     switch (resp1) {
                                         case 1:
@@ -129,6 +114,7 @@ public class MenuPartida {
                                             System.out.println("retruco");
                                             //jugador actual responde
                                             System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                            while (!scan.hasNextInt()) scan.next();
                                             resp2 = scan.nextInt();
                                             switch (resp2) {
                                                 case 1:
@@ -138,6 +124,7 @@ public class MenuPartida {
                                                     System.out.println("vale cuatro");
                                                     //jugador rival responde
                                                     System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                    while (!scan.hasNextInt()) scan.next();
                                                     resp3 = scan.nextInt();
                                                     switch (resp3) {
                                                         case 1:
@@ -166,10 +153,11 @@ public class MenuPartida {
                                             ganoMano = trucazo.getJugadorAct();
                                             break;
                                     }
-                                } else if (trucazo.getTrucoAcumulado() == 2) {
+                                } else if (trucazo.getTrucoAcumulado() == 2) { //el truco ya esta cantado
                                     System.out.println("retruco");
                                     //jugador rival responde
                                     System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                    while (!scan.hasNextInt()) scan.next();
                                     resp1 = scan.nextInt();
                                     switch (resp1) {
                                         case 1:
@@ -179,6 +167,7 @@ public class MenuPartida {
                                             System.out.println("vale cuatro");
                                             //jugador actual responde
                                             System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                            while (!scan.hasNextInt()) scan.next();
                                             resp2 = scan.nextInt();
                                             switch (resp2) {
                                                 case 1:
@@ -200,10 +189,11 @@ public class MenuPartida {
                                             break;
                                     }
                                     break;
-                                } else if (trucazo.getTrucoAcumulado() == 3) {
+                                } else if (trucazo.getTrucoAcumulado() == 3) { //el retruco ya esta cantado
                                     System.out.println("vale cuatro");
                                     //jugador rival responde
                                     System.out.println(trucazo.getJugadorRiv() + ", que responde? 0: no quiero,  1: quiero");
+                                    while (!scan.hasNextInt()) scan.next();
                                     resp1 = scan.nextInt();
                                     switch (resp1) {
                                         case 1:
@@ -230,12 +220,14 @@ public class MenuPartida {
                             if (trucazo.getRondaactual() < 2){ //solamente se puede cantar envido en la primera ronda de la mano
                                 if (cantarEnvido) { //chequeo si ya se cantó el envido
                                     System.out.println("cuánto quiere cantar de envido? 0: mejor no, 1: envido, 2: real, 3: falta");
+                                    while (!scan.hasNextInt()) scan.next();
                                     envido = scan.nextInt();
                                     switch (envido) {
                                         case 1:
                                             System.out.println("envido");
                                             //jugador rival responde
-                                            System.out.println(trucazo.getJugadorRiv() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                            System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                            while (!scan.hasNextInt()) scan.next();
                                             resp1 = scan.nextInt();
                                             switch (resp1) {
                                                 case 1:
@@ -244,12 +236,14 @@ public class MenuPartida {
                                                     break;
                                                 case 2:
                                                     System.out.println("cuánto más quiere cantar? 1: envido, 2: real, 3: falta, 0: mejor no");
+                                                    while (!scan.hasNextInt()) scan.next();
                                                     resp2 = scan.nextInt();
                                                     switch (resp2) {
                                                         case 1:
                                                             System.out.println("envido");
                                                             // jugador actual
                                                             System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                                            while (!scan.hasNextInt()) scan.next();
                                                             resp3 = scan.nextInt();
                                                             switch (resp3) {
                                                                 case 1:
@@ -258,12 +252,14 @@ public class MenuPartida {
                                                                     break;
                                                                 case 2:
                                                                     System.out.println("cuánto más quiere cantar? 1: real, 2: falta, 0: mejor no");
+                                                                    while (!scan.hasNextInt()) scan.next();
                                                                     resp4 = scan.nextInt();
                                                                     switch (resp4) {
                                                                         case 1:
                                                                             System.out.println("real envido");
                                                                             //jugador rival
                                                                             System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                                                            while (!scan.hasNextInt()) scan.next();
                                                                             resp5 = scan.nextInt();
                                                                             switch (resp5) {
                                                                                 case 1:
@@ -274,6 +270,7 @@ public class MenuPartida {
                                                                                     System.out.println("falta envido");
                                                                                     //jugador actual responde
                                                                                     System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                                                    while (!scan.hasNextInt()) scan.next();
                                                                                     resp6 = scan.nextInt();
                                                                                     switch (resp6) {
                                                                                         case 1:
@@ -294,6 +291,7 @@ public class MenuPartida {
                                                                             System.out.println("falta envido");
                                                                             //jugador rival
                                                                             System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                                            while (!scan.hasNextInt()) scan.next();
                                                                             resp5 = scan.nextInt();
                                                                             switch (resp5) {
                                                                                 case 1:
@@ -319,6 +317,7 @@ public class MenuPartida {
                                                             System.out.println("real envido");
                                                             // jugador actual
                                                             System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                                            while (!scan.hasNextInt()) scan.next();
                                                             resp3 = scan.nextInt();
                                                             switch (resp3) {
                                                                 case 1:
@@ -329,6 +328,7 @@ public class MenuPartida {
                                                                     System.out.println("falta envido");
                                                                     //jugador actual responde
                                                                     System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                                    while (!scan.hasNextInt()) scan.next();
                                                                     resp2 = scan.nextInt();
                                                                     switch (resp2) {
                                                                         case 1:
@@ -348,6 +348,7 @@ public class MenuPartida {
                                                         case 3:
                                                             // jugador actual
                                                             System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                            while (!scan.hasNextInt()) scan.next();
                                                             resp2 = scan.nextInt();
                                                             switch (resp2) {
                                                                 case 1:
@@ -374,6 +375,7 @@ public class MenuPartida {
                                             System.out.println("real envido");
                                             //jugador rival responde
                                             System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero, 2: más");
+                                            while (!scan.hasNextInt()) scan.next();
                                             resp1 = scan.nextInt();
                                             switch (resp1) {
                                                 case 1:
@@ -384,6 +386,7 @@ public class MenuPartida {
                                                     System.out.println("falta envido");
                                                     //jugador actual responde
                                                     System.out.println(trucazo.getJugadorAct().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                                    while (!scan.hasNextInt()) scan.next();
                                                     resp2 = scan.nextInt();
                                                     switch (resp2) {
                                                         case 1:
@@ -405,6 +408,7 @@ public class MenuPartida {
                                             System.out.println("falta envido");
                                             //jugador rival responde
                                             System.out.println(trucazo.getJugadorRiv().getNombre() + ", que responde? 0: no quiero,  1: quiero");
+                                            while (!scan.hasNextInt()) scan.next();
                                             resp1 = scan.nextInt();
                                             switch (resp1) {
                                                 case 1:
@@ -451,6 +455,6 @@ public class MenuPartida {
 
     public Jugador jugadorGanador(){
         return jugadorGanador();
-    }
+    } //para retornar el ganador al finalizar la partida
 }
 

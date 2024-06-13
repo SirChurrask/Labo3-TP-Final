@@ -55,6 +55,7 @@ public class Main {
         {
             System.out.printf(menues.mostrarMenuInicial());
             System.out.printf("Ingrese una opcion: ");
+            while (!scan.hasNextInt()) scan.next();
             seleccion = scan.nextInt();
 
             switch (seleccion)
@@ -65,6 +66,7 @@ public class Main {
                         System.out.println("");
                     }
                     System.out.println("Ingrese el nombre del 1er jugador: ");
+                    scan.nextLine();
                     String nombre = scan.nextLine();
                     Jugador j1 = new Jugador(nombre);
                     
@@ -105,6 +107,7 @@ public class Main {
 
                         System.out.println(menues.mostrarMenuInstrucciones());
                         System.out.printf("Ingrese una opcion: ");
+                        while (!scan.hasNextInt()) scan.next();
                         seleccionInstrucciones = scan.nextInt();
 
                         switch (seleccionInstrucciones)
@@ -118,6 +121,7 @@ public class Main {
                                 controladoraArchivos.leerArchivoReglas();
 
                                 System.out.printf("\n\nPresione 1 para volver al menu anterior o presiones 2 cerrar el programa: ");
+                                while (!scan.hasNextInt()) scan.next();
                                 opcion = scan.nextInt();
 
                                 if(opcion == 1)
@@ -136,6 +140,7 @@ public class Main {
                                 System.out.println(instrucciones.mostrarValores());
 
                                 System.out.printf("Presione 1 para volver al menu anterior o presiones 2 para cerrear el programa: ");
+                                while (!scan.hasNextInt()) scan.next();
                                 opcion = scan.nextInt();
 
                                 if(opcion == 1)
