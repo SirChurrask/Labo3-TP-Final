@@ -13,17 +13,7 @@ public class MenuPartida {
     private Jugador ganoMano;
     private boolean cantarEnvido; //si está permitido cantar envido
     private Jugador cantaTruco; //puntero al jugador que cantó truco, para evitar que cante otra vez
-    private int cantar;
-    private int resp1;
-    private int resp2;
-    private int resp3;
-    private int resp4;
-    private int resp5;
-    private int resp6;
-    private int envido;
-    private int opcionturno;
     private Jugador aux;
-    private int i;
     //
 
 
@@ -33,17 +23,7 @@ public class MenuPartida {
         ganoMano = null;
         cantarEnvido = true;
         cantaTruco = null;
-        cantar = 0;
-        resp1 = 0;
-        resp2 = 0;
-        resp3 = 0;
-        resp4 = 0;
-        resp5 = 0;
-        resp6 = 0;
-        envido = 0;
-        opcionturno = 0;
         aux = null;
-        i = 0;
     }
 
     //
@@ -79,23 +59,23 @@ public class MenuPartida {
 
     private void inicializarTurno(){
         //inicializar turno
-        i = 0;
         cantarEnvido = true; //si está permitido cantar envido
         cantaTruco = null; //puntero al jugador que cantó truco, para evitar que cante otra vez
-        cantar = 0;
-        resp1 = 0;
-        resp2 = 0;
-        resp3 = 0;
-        resp4 = 0;
-        resp5 = 0;
-        resp6 = 0;
-        envido = 0;
-        opcionturno = 0;
         aux = null;
     }
 
     private void opcionesJugador(){
         Scanner scan = new Scanner(System.in);
+        int i = 0;
+        int cantar = 0;
+        int resp1 = 0;
+        int resp2 = 0;
+        int resp3 = 0;
+        int resp4 = 0;
+        int resp5 = 0;
+        int resp6 = 0;
+        int envido = 0;
+        int opcionturno = 0;
         //opciones jugador
         while (i == 0){
             System.out.println("qué quiere hacer? 1: jugar carta, 2: cantar, 3: irse al mazo");
