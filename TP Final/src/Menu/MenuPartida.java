@@ -59,13 +59,14 @@ public class MenuPartida {
 
     private void inicializarTurno(){
         //inicializar turno
-        cantarEnvido = true; //si está permitido cantar envido
-        cantaTruco = null; //puntero al jugador que cantó truco, para evitar que cante otra vez
+        cantarEnvido = true;
+        cantaTruco = null;
         aux = null;
     }
 
     private void opcionesJugador(){
         Scanner scan = new Scanner(System.in);
+        //datos aux para los switchs
         int i = 0;
         int cantar = 0;
         int resp1 = 0;
