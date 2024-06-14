@@ -70,45 +70,53 @@ public class ControladoraJSON {
 
         // Convertir la cadena de texto en un JSONArray
 
-        JSONArray jsonArray = new JSONArray(jsonContent.toString());
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(jsonContent.toString());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
 
         // Procesar cada jugador en la lista
-        for (Jugador jugador : jugadores) {
-            boolean encontrado = false;
-        if (jsonArray.length() > 1) {
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String jsonNombre = jsonObject.getString("Nombre");
+        try {
+            for (Jugador jugador : jugadores) {
+                boolean encontrado = false;
+                if (jsonArray.length() > 1) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String jsonNombre = jsonObject.getString("Nombre");
 
-                    if (jugador.getNombre().equalsIgnoreCase(jsonNombre)) {
-                        encontrado = true;
-                        jsonObject.put("Partidas Jugadas", jsonObject.getInt("Partidas Jugadas") + 1);
-                        if (jugador.partidaGanada()) {
-                            jsonObject.put("Partidas Ganadas", jsonObject.getInt("Partidas Ganadas") + 1);
-                        } else {
-                            jsonObject.put("Partidas Perdidas", jsonObject.getInt("Partidas Perdidas") + 1);
+                        if (jugador.getNombre().equalsIgnoreCase(jsonNombre)) {
+                            encontrado = true;
+                            jsonObject.put("Partidas Jugadas", jsonObject.getInt("Partidas Jugadas") + 1);
+                            if (jugador.partidaGanada()) {
+                                jsonObject.put("Partidas Ganadas", jsonObject.getInt("Partidas Ganadas") + 1);
+                            } else {
+                                jsonObject.put("Partidas Perdidas", jsonObject.getInt("Partidas Perdidas") + 1);
+                            }
+                            break;
                         }
-                        break;
                     }
-                }
 
-        }
-            if (!encontrado) {
-                JSONObject newJugador = new JSONObject();
-                newJugador.put("Nombre", jugador.getNombre().toLowerCase());
-                newJugador.put("Partidas Jugadas", 1);
-                if (jugador.partidaGanada()) {
-                    newJugador.put("Partidas Ganadas", 1);
-                    newJugador.put("Partidas Perdidas", 0);
-                }else {
-                    newJugador.put("Partidas Ganadas", 0);
-                    newJugador.put("Partidas Perdidas", 1);
                 }
-                jsonArray.put(newJugador);
+                if (!encontrado) {
+                    JSONObject newJugador = new JSONObject();
+                    newJugador.put("Nombre", jugador.getNombre().toLowerCase());
+                    newJugador.put("Partidas Jugadas", 1);
+                    if (jugador.partidaGanada()) {
+                        newJugador.put("Partidas Ganadas", 1);
+                        newJugador.put("Partidas Perdidas", 0);
+                    } else {
+                        newJugador.put("Partidas Ganadas", 0);
+                        newJugador.put("Partidas Perdidas", 1);
+                    }
+                    jsonArray.put(newJugador);
+                }
             }
+        } catch (JSONException e){
+            throw new RuntimeException(e);
         }
-
         return jsonArray;
     }
 
@@ -128,38 +136,46 @@ public class ControladoraJSON {
 
         // Convertir la cadena de texto en un JSONArray
 
-        JSONArray jsonArray = new JSONArray(jsonContent.toString());
+        JSONArray jsonArray = null;
+        try {
+            jsonArray = new JSONArray(jsonContent.toString());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         // Inicializamos la variable que vamos a devolver
         String estadisticas = "";
 
         // Procesar cada jugador en la lista
-        for (Jugador jugador : jugadores) {
-            boolean encontrado = false;
-            if (jsonArray.length() > 1) {
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String jsonNombre = jsonObject.getString("Nombre");
+        try {
+            for (Jugador jugador : jugadores) {
+                boolean encontrado = false;
+                if (jsonArray.length() > 1) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String jsonNombre = jsonObject.getString("Nombre");
 
-                    if (jugador.getNombre().equalsIgnoreCase(jsonNombre)) {
-                        encontrado = true;
-                        estadisticas+="Nombre: "+jsonNombre+"\n";
-                        estadisticas+="Partidas Jugadas: "+jsonObject.getInt("Partidas Jugadas")+"\n";
-                        estadisticas+="Partidas Ganadas: "+jsonObject.getInt("Partidas Ganadas")+"\n";
-                        estadisticas+="Partidas Perdidas: "+jsonObject.getInt("Partidas Perdidas")+"\n\n";
-                        break;
+                        if (jugador.getNombre().equalsIgnoreCase(jsonNombre)) {
+                            encontrado = true;
+                            estadisticas += "Nombre: " + jsonNombre + "\n";
+                            estadisticas += "Partidas Jugadas: " + jsonObject.getInt("Partidas Jugadas") + "\n";
+                            estadisticas += "Partidas Ganadas: " + jsonObject.getInt("Partidas Ganadas") + "\n";
+                            estadisticas += "Partidas Perdidas: " + jsonObject.getInt("Partidas Perdidas") + "\n\n";
+                            break;
+                        }
                     }
+
                 }
-
+                if (!encontrado) {
+                    estadisticas += "Nombre: " + jugador.getNombre() + "\n";
+                    estadisticas += "Partidas Jugadas: 0\n";
+                    estadisticas += "Partidas Ganadas: 0\n";
+                    estadisticas += "Partidas Perdidas: 0\n\n";
+                }
             }
-            if (!encontrado) {
-                estadisticas+="Nombre: "+jugador.getNombre()+"\n";
-                estadisticas+="Partidas Jugadas: 0\n";
-                estadisticas+="Partidas Ganadas: 0\n";
-                estadisticas+="Partidas Perdidas: 0\n\n";
-            }
+        }catch (JSONException e){
+            throw new RuntimeException(e);
         }
-
         return estadisticas;
     }
 

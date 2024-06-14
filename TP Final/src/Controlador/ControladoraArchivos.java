@@ -33,7 +33,7 @@ public class ControladoraArchivos {
             file.close();
         }catch (FileNotFoundException ex){
             System.out.println("Archivo no encontrado: "+ex.getMessage());
-        }catch (IOException ex){
+        }catch (IOException | JSONException ex){
             System.out.println("Error al generar el archivo: "+ex.getMessage());
         }
 
