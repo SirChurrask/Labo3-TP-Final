@@ -1,14 +1,20 @@
 [
     {
         "Nombre": "juan",
-        "Partidas Jugadas": 3,
-        "Partidas Perdidas": 3,
-        "Partidas Ganadas": 0
+        "Partidas Jugadas": 9,
+        "Partidas Perdidas": 5,
+        "Partidas Ganadas": 4
     },
     {
         "Nombre": "pablo",
         "Partidas Jugadas": 3,
         "Partidas Perdidas": 3,
         "Partidas Ganadas": 0
+    },
+    {
+        "Nombre": "carlos",
+        "Partidas Jugadas": 6,
+        "Partidas Perdidas": 4,
+        "Partidas Ganadas": 2
     }
 ]
