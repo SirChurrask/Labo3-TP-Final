@@ -22,6 +22,28 @@ public class Main {
         Mazo<CartaTruco> mazo = new Mazo<>();
         controladoraJSON.cargaArrayConJson(mazo);
 
+        // Prueba
+/*
+        System.out.println("Ingrese el nombre del 1er jugador: ");
+        String nombre = scan.nextLine();
+        Jugador j1 = new Jugador(nombre);
+
+        scan.nextLine();
+
+        System.out.println("Ingrese el nombre del 2do jugador: ");
+        String nombre2 = scan.nextLine();
+        Jugador j2 = new Jugador(nombre2);
+
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        jugadores.add(j1);
+        jugadores.add(j2);
+
+        JSONArray jsonArray =  controladoraJSON.cargaJsonArray(jugadores, "ranking"); // "TP Final/src/mazo.json"
+
+        System.out.println(jsonArray);
+
+        controladoraArchivos.generaJSONRanking(jsonArray, "ranking");
+*/
 
 
         int seleccion = 0;
@@ -47,22 +69,26 @@ public class Main {
                     scan.nextLine();
                     String nombre = scan.nextLine();
                     Jugador j1 = new Jugador(nombre);
-
+                    
                     scan.nextLine();
 
                     System.out.println("Ingrese el nombre del 2do jugador: ");
                     String nombre2 = scan.nextLine();
                     Jugador j2 = new Jugador(nombre2);
 
-                    MenuPartida menuPartida = new MenuPartida(j1, j2, mazo);
-                    menuPartida.partida();
                     ArrayList<Jugador> jugadores = new ArrayList<>();
                     jugadores.add(j1);
                     jugadores.add(j2);
 
-                    JSONArray jsonArray;
-                    jsonArray =  controladoraJSON.cargaJson(jugadores);
+                    System.out.println(controladoraJSON.estadisticasIniciales(jugadores, "ranking"));
+
+                    MenuPartida menuPartida = new MenuPartida(j1, j2, mazo);
+                    menuPartida.partida();
+
+
+                    JSONArray jsonArray =  controladoraJSON.cargaJsonArray(jugadores, "ranking");
                     controladoraArchivos.generaJSONRanking(jsonArray, "ranking");
+
                     System.out.println("Ganador: "+menuPartida.jugadorGanador().getNombre());
                     break;
                 case 2:

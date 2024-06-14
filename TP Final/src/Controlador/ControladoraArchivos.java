@@ -27,8 +27,8 @@ public class ControladoraArchivos {
 
     public void generaJSONRanking(JSONArray jsonArray, String archivo){
         try{
-            FileWriter file = new FileWriter("TP Final/src/Truco/"+archivo+".json");
-            file.write(jsonArray.toString());
+            FileWriter file = new FileWriter(archivo+".json");//"TP Final/src/Truco/"+archivo+".json"
+            file.write(jsonArray.toString(4));
             file.flush();
             file.close();
         }catch (FileNotFoundException ex){
