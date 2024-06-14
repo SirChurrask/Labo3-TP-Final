@@ -459,7 +459,13 @@ public class MenuPartida {
     }
 
     public Jugador jugadorGanador(){
-        return jugadorGanador();
+        Jugador aux =null;
+        if (trucazo.getJugadorAct().partidaGanada()){
+            aux = trucazo.getJugadorAct();
+        } else if (trucazo.getJugadorRiv().partidaGanada()) {
+            aux = trucazo.getJugadorRiv();
+        }
+        return aux;
     } //para retornar el ganador al finalizar la partida
 }
 

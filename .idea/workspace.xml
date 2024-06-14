@@ -57,7 +57,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/TP Final/src/Menu/MenuPartida.java</url>
-          <line>461</line>
+          <line>467</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

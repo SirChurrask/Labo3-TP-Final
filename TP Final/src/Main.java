@@ -66,7 +66,7 @@ public class Main {
                     JSONArray jsonArray =  controladoraJSON.cargaJsonArray(jugadores, "ranking");
                     controladoraArchivos.generaJSONRanking(jsonArray, "ranking");
 
-                    System.out.println("Ganador: "+menuPartida.jugadorGanador().getNombre());
+                    //System.out.println("Ganador: "+menuPartida.jugadorGanador().getNombre());
                     break;
                 case 2:
                     for(i=0; i<10; i++)
