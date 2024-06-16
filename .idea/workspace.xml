@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="a0bd705a-7074-401a-9cec-16bba3e1bd35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TP Final/src/Controlador/ControladoraJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/TP Final/src/Controlador/ControladoraJSON.java" afterDir="false" />
@@ -12,11 +13,15 @@
       <change beforePath="$PROJECT_DIR$/out/production/Labo3-TP-Final-main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Labo3-TP-Final-main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ranking.json" beforeDir="false" afterPath="$PROJECT_DIR$/ranking.json" afterDir="false" />
     </list>
+=======
+    <list default="true" id="24533692-45b0-4108-b8fa-a78f8f6a57d3" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -24,10 +29,24 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2hjsDMxnMdT0YmFG4suMEq3PMt5" />
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2hWDdTGoG7XoIklwaQOwE2rHIqr" />
+>>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
@@ -42,6 +61,20 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Julián/OneDrive/Escritorio/Facultad/2do año/Programacion J/Parcial 2/Archivos",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+>>>>>>> Stashed changes
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -52,11 +85,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< Updated upstream
       <changelist id="a0bd705a-7074-401a-9cec-16bba3e1bd35" name="Changes" comment="" />
       <created>1718118700903</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718118700903</updated>
+=======
+      <changelist id="24533692-45b0-4108-b8fa-a78f8f6a57d3" name="Changes" comment="" />
+      <created>1717701026421</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717701026421</updated>
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
