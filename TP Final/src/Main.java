@@ -22,6 +22,9 @@ public class Main {
         Mazo<CartaTruco> mazo = new Mazo<>();
         controladoraJSON.cargaArrayConJson(mazo);
 
+      //  controladoraArchivos.leerArchivoReglas(); CAMBIAR
+
+       // System.out.println(controladoraJSON.devuelveRanking("ranking"));
 
         int seleccion = 0;
         int i = 0;
@@ -146,6 +149,11 @@ public class Main {
                     }while(seleccionInstrucciones < 1 || seleccionInstrucciones > 3);
 
                     break;
+
+                case 3:
+                    System.out.println("RANKING POR PARTIDAS GANADAS: \n");
+                    System.out.println(controladoraJSON.devuelveRanking("ranking")); break;
+
                 default:
                     for(i=0; i<10; i++)
                     {
@@ -154,6 +162,8 @@ public class Main {
 
                     System.out.println("Opcion ingresada invalida, vuelvalo a intentar");
                     break;
+
+
             }
         }while(seleccion < 1 || seleccion > 2);
 

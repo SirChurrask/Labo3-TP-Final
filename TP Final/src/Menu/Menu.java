@@ -13,6 +13,7 @@ JSONArray jsonArray;
                 "|                                                               |\n" +
                 "|                           1- JUGAR                            |\n" +
                 "|                        2- INSTRUCCIONES                       |\n" +
+                "|                        3- VER RANKING                       |\n" +
                 "|                                                               |\n" +
                 "҉ ------------------------------------------------------------- ҉\n";
     }

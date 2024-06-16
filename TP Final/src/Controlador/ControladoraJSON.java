@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ControladoraJSON {
 
@@ -179,6 +181,69 @@ public class ControladoraJSON {
         return estadisticas;
     }
 
+    public String devuelveRanking(String archivo) {
+        StringBuilder jsonContent = new StringBuilder();
+
+        // Leer el archivo JSON en una cadena de texto
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo + ".json"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonContent.append(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error al leer el archivo: " + e.getMessage(), e);
+        }
+
+        // Convertir la cadena de texto en un JSONArray
+        JSONArray jsonArray;
+        try {
+            jsonArray = new JSONArray(jsonContent.toString());
+        } catch (JSONException e) {
+            throw new RuntimeException("Error al convertir el contenido a JSONArray: " + e.getMessage(), e);
+        }
+
+        // Convertir JSONArray a una lista de JSONObject
+        List<JSONObject> jsonObjects = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                jsonObjects.add(jsonArray.getJSONObject(i));
+            } catch (JSONException e) {
+                throw new RuntimeException("Error al obtener JSONObject del JSONArray: " + e.getMessage(), e);
+            }
+        }
+
+        // Ordenar la lista de JSONObjects por "Partidas Ganadas" en orden descendente
+        jsonObjects.sort(new Comparator<JSONObject>() {
+            @Override
+            public int compare(JSONObject a, JSONObject b) {
+                try {
+                    int partidasGanadasA = a.getInt("Partidas Ganadas");
+                    int partidasGanadasB = b.getInt("Partidas Ganadas");
+                    return Integer.compare(partidasGanadasB, partidasGanadasA); // Orden descendente
+                } catch (JSONException e) {
+                    throw new RuntimeException("Error al obtener 'Partidas Ganadas': " + e.getMessage(), e);
+                }
+            }
+        });
+
+        // Inicializamos la variable que vamos a devolver
+        StringBuilder estadisticas = new StringBuilder();
+
+        // Procesar cada jugador en la lista ordenada
+        for (JSONObject jsonObject : jsonObjects) {
+            try {
+                String jsonNombre = jsonObject.getString("Nombre");
+                estadisticas.append("Nombre: ").append(jsonNombre).append("\n");
+                estadisticas.append("Partidas Jugadas: ").append(jsonObject.getInt("Partidas Jugadas")).append("\n");
+                estadisticas.append("Partidas Ganadas: ").append(jsonObject.getInt("Partidas Ganadas")).append("\n");
+                estadisticas.append("Partidas Perdidas: ").append(jsonObject.getInt("Partidas Perdidas")).append("\n\n");
+            } catch (JSONException e) {
+                throw new RuntimeException("Error al obtener datos del JSONObject: " + e.getMessage(), e);
+            }
+        }
+
+        return estadisticas.toString();
+    }
 }
 
 
