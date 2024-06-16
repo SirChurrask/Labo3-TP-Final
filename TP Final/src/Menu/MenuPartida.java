@@ -431,6 +431,11 @@ public class MenuPartida {
                             }else{
                                 System.out.println("no se puede cantar envido");
                             }
+                            if(trucazo.getJugadorAct().partidaGanada() || trucazo.getJugadorRiv().partidaGanada()){ //si el puntaje del envido gana la partida, corta el loop de la mano
+                                i = 2;
+                                trucazo.finalMano();
+                                ganoMano = trucazo.getJugadorMano();
+                            }
                             break;
                         default:
                             System.out.println("bueno");
@@ -454,7 +459,13 @@ public class MenuPartida {
     }
 
     public Jugador jugadorGanador(){
-        return jugadorGanador();
+        Jugador aux =null;
+        if (trucazo.getJugadorAct().partidaGanada()){
+            aux = trucazo.getJugadorAct();
+        } else if (trucazo.getJugadorRiv().partidaGanada()) {
+            aux = trucazo.getJugadorRiv();
+        }
+        return aux;
     } //para retornar el ganador al finalizar la partida
 }
 
